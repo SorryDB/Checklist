@@ -7,6 +7,8 @@ The sorries in this project are *easy* from the point of view of automated
 theorem proving, but represent individual engineering issues that may occur when
 attempting to automatically fill sorries 'in the wild'.
 
+See [Checklist.lean](Checklist/Checklist.lean) for the list of sorries.
+
 ## Contributing
 
 Contributions are welcome. If you encounter (recurring) engineering issues that
