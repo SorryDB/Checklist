@@ -10,13 +10,13 @@ attempting to automatically fill sorries 'in the wild'.
 ## Contributing
 
 Contributions are welcome. If you encounter (recurring) engineering issues that
-may occur in automatically tring to fill sorries, feel free to make a PR.
+in using automation to fill Lean sorries in real-world projects, feel free to make a PR.
 
 Requirements:
 
 1. Only `Prop`-valued sorries without metavariables (holes)
-2. Please submit minimal working examples, so that each sorry representes a
-   unique difficulty
+2. Please submit minimal working examples, so that each sorry represents a
+   unique difficulty; ideally the 'proving' itself should be as easy as possible
 3. Please include a proof string in the comments (replacing "sorry" with this
    string should close the sorry)
 
