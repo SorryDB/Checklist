@@ -79,15 +79,4 @@ lemma KP (n : ℕ) (h : n ∣ Fintype.card F - 1) (ζ : R)
     ∃ χ : MulChar F R, orderOf χ = n := by sorry
 
 
--- [YF] mathlib statement, solved by exact?
--- namespace ProbabilityTheory
-
--- section Kernel
-
--- variable {Ω Ω' : Type*} {mΩ : MeasurableSpace Ω} {mΩ' : MeasurableSpace Ω'}
---   {ν : MeasureTheory.Measure Ω'} {κ : ProbabilityTheory.Kernel Ω' Ω} {X : Ω → ℝ} {c : ℝ≥0}
-
--- #check ProbabilityTheory.integrable_exp_mul_of_abs_le
-
--- lemma YF (h : ProbabilityTheory.Kernel.HasSubgaussianMGF X c κ ν) :
---     ∀ᵐ ω' ∂ν, κ ω' Set.univ ≤ 1 := by sorry
+-- [PG] mathlib statement, solved by exact?
