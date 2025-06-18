@@ -64,11 +64,11 @@ open second
 theorem GM : ∃ x : ℝ, k x = 100 := by sorry
 end
 
--- [KM] direct application of imported theorem; warning: this can ALSO be proven
--- directly; need something easier, yet robust
+-- [KM] solved by exact? because of auxiliary imports
+-- proof string "exact factorial_inequality n (m + 1)"
 theorem KM (n : ℕ) (m : ℕ) :
     Nat.factorial (n + m + 2) ≥ Nat.factorial (n + 1) * Nat.pow 2 (m + 1) :=
-  by exact factorial_inequality n (m + 1)
+  by sorry
 
 -- [KP] mathlib statement, solved by exact?
 -- proof string: "exact MulChar.exists_mulChar_orderOf F h hζ"
@@ -80,3 +80,15 @@ lemma KP (n : ℕ) (h : n ∣ Fintype.card F - 1) (ζ : R)
 
 
 -- [PG] mathlib statement, solved by exact?
+-- proof string: "exact ProbabilityTheory.integrable_exp_mul_of_abs_le hu_int_pos hu_int_neg htu"
+variable (Ω : Type) (m : MeasurableSpace Ω) (X : Ω → ℝ) (μ : MeasureTheory.Measure Ω)
+lemma YF (u t : ℝ) (hu_int_pos : MeasureTheory.Integrable (fun ω ↦ Real.exp (u * X ω)) μ)
+    (hu_int_neg : MeasureTheory.Integrable (fun ω ↦ Real.exp (- u * X ω)) μ)
+    (htu : |t| ≤ |u|) :
+    MeasureTheory.Integrable (fun ω ↦ Real.exp (t * X ω)) μ := by sorry
+
+
+-- [HK] mathlib statement, solved by exact?
+-- proof string: "exact Subgroup.nilpotencyClass_le _"
+theorem PG (G : Type u) [Group G] [Group.IsNilpotent G] (H : Subgroup G) :
+    Group.nilpotencyClass H ≤ Group.nilpotencyClass G := by sorry
