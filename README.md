@@ -17,16 +17,18 @@ Requirements:
 1. Only `Prop`-valued sorries without metavariables (holes)
 2. Please submit minimal working examples, so that each sorry representes a
    unique difficulty
-3. Please don't include the proof in the code, but do provide the proof string
-   in the PR description
+3. Please include a proof string in the comments (replacing "sorry" with this
+   string should close the sorry)
+
+## TODO:
+
+1. remove the proof strings, think of a "safe" place to store these. Document
+   the sorries, with some guidance as to how to overcome the difficulties
+2. use the SorryDB indexer to make a list of SorryDB indices for this project
+   (even better: regularly update)
+
 
 ## Types of sorries
-
-### Placement of the sorry keyword
-
-
-### Context and premise selection
-
 
 
 
