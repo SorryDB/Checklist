@@ -1,6 +1,11 @@
 import Mathlib
 import Checklist.Auxiliary
 
+
+/-
+   Placement of the sorry keyword
+-/
+
 -- [C9] most basic example
 -- proof string: "rfl"
 theorem C9 : 1 = 1 := by sorry
@@ -37,6 +42,15 @@ theorem LP (n : ℕ) : n = n := by
   · rfl
   · sorry
 
+-- [F7] `sorry` in field of class construction
+-- proof string: "intro x y z; rfl"
+def F7 : Semigroup Nat :=
+  { mul := fun x y ↦ 0
+    mul_assoc := by sorry }
+
+/-
+  Dependency on auxiliary definitions
+-/
 
 -- [EG]: essential definition outside theorem statement
 -- proof string: "use 70; unfold f; norm_num"
@@ -69,6 +83,11 @@ section
 open second
 theorem GM : ∃ x : ℝ, k x = 100 := by sorry
 end
+
+
+/-
+   Premise selection
+-/
 
 -- [KM] solved by exact? because of auxiliary imports
 -- proof string "exact factorial_inequality n (m + 1)"
