@@ -78,19 +78,17 @@ theorem KM (n : ℕ) (m : ℕ) :
 
 -- [KP] mathlib statement, solved by exact?
 -- proof string: "exact MulChar.exists_mulChar_orderOf F h hζ"
-variable (F : Type) [Field F] [Fintype F]
-variable (R : Type) [CommRing R]
-lemma KP (n : ℕ) (h : n ∣ Fintype.card F - 1) (ζ : R)
-    (hζ : IsPrimitiveRoot ζ n) :
+lemma KP (F : Type) [Field F] [Fintype F] (R : Type) [CommRing R]
+    (n : ℕ) (h : n ∣ Fintype.card F - 1) (ζ : R) (hζ : IsPrimitiveRoot ζ n) :
     ∃ χ : MulChar F R, orderOf χ = n := by sorry
 
 
 -- [PG] mathlib statement, solved by exact?
 -- proof string: "exact ProbabilityTheory.integrable_exp_mul_of_abs_le hu_int_pos hu_int_neg htu"
-variable (Ω : Type) (m : MeasurableSpace Ω) (X : Ω → ℝ) (μ : MeasureTheory.Measure Ω)
-lemma YF (u t : ℝ) (hu_int_pos : MeasureTheory.Integrable (fun ω ↦ Real.exp (u * X ω)) μ)
-    (hu_int_neg : MeasureTheory.Integrable (fun ω ↦ Real.exp (- u * X ω)) μ)
-    (htu : |t| ≤ |u|) :
+lemma YF (Ω : Type) (m : MeasurableSpace Ω) (X : Ω → ℝ) (μ : MeasureTheory.Measure Ω)
+    (u t : ℝ) (htu : |t| ≤ |u|)
+    (hu_int_pos : MeasureTheory.Integrable (fun ω ↦ Real.exp (u * X ω)) μ)
+    (hu_int_neg : MeasureTheory.Integrable (fun ω ↦ Real.exp (- u * X ω)) μ) :
     MeasureTheory.Integrable (fun ω ↦ Real.exp (t * X ω)) μ := by sorry
 
 
