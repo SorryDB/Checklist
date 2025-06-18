@@ -22,7 +22,6 @@ theorem AF : 1 = 1 := by
   assumption
 
 
-
 -- [PP] `sorry` tactic in function argument
 -- proof string: "intro n h; rfl"
 theorem PP : ∀ n : ℕ, n = n := fun n ↦ Nat.rec (rfl) (by sorry) n
@@ -48,14 +47,33 @@ def F7 : Semigroup Nat :=
   { mul := fun x y ↦ 0
     mul_assoc := by sorry }
 
+
+-- [XC] long multiline theorem statement
+-- proof string: "nlinarith"
+
+example (u v x y z t : ℝ)
+    (h1 : 0 < z)
+    (h2 : 0 ≤ 1 - z)
+    (h3 : 0 ≤ t - 1)
+    (h4 : 0 ≤ t - x)
+    (h5 : 0 ≤ t - y)
+    (h6 : 0 ≤ u)
+    (h7 : 0 ≤ v)
+    (h8 : 0 < z - u)
+    (h9 : 0 < z - v) :
+    u * y + v * x + u * v < 3 * z * t := by
+  nlinarith
+
+
 /-
-  Dependency on auxiliary definitions
+  Context awareness
 -/
 
 -- [EG]: essential definition outside theorem statement
 -- proof string: "use 70; unfold f; norm_num"
 def f : ℝ → ℝ := fun x ↦ x + 30
 theorem EG : ∃ x : ℝ, f x = 100 := by sorry
+
 
 -- [WX] essential definition in imported file
 -- proof string: "use 51; unfold g; norm_num"
