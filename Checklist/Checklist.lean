@@ -1,30 +1,37 @@
 import Mathlib
 import Checklist.Auxiliary
 
--- [C9] most basic example; "rfl"
+-- [C9] most basic example
+-- proof string: "rfl"
 theorem C9 : 1 = 1 := by sorry
 
 
--- [QU] `sorry` used as a term; "by linarith"
+-- [QU] `sorry` used as a term
+-- proof string: "by linarith"
 theorem QU (n : ℕ) (h : 2 * n < 7) : n ≤ 3 := sorry
 
--- [AF] `sorry` in a have statement; "rfl"
+-- [AF] `sorry` in a have statement
+-- proof string: "rfl"
 theorem AF : 1 = 1 := by
   have h : 1 = 1 := by sorry
   assumption
 
 
 
--- [PP] `sorry` tactic in function argument "intro n h; rfl"
+-- [PP] `sorry` tactic in function argument
+-- proof string: "intro n h; rfl"
 theorem PP : ∀ n : ℕ, n = n := fun n ↦ Nat.rec (rfl) (by sorry) n
 
--- [HJ] `sorry` tactic in function argument "by intro n h; rfl"
+-- [HJ] `sorry` tactic in function argument
+-- proof string: "by intro n h; rfl"
 theorem HJ : ∀ n : ℕ, n = n := fun n ↦ Nat.rec (rfl) (sorry) n
 
--- [R3] two `sorry` on same line; "rfl" and "intro n h; rfl"
+-- [R3] two `sorry` on same line
+-- proof string: "rfl" and "intro n h; rfl"
 theorem R3 : ∀ n : ℕ, n = n := fun n ↦ Nat.rec (by sorry) (by sorry) n
 
 -- [LP] `sorry` in an indented focus block
+-- proof string: "rfl"
 theorem LP (n : ℕ) : n = n := by
   induction n
   · rfl
@@ -34,7 +41,6 @@ theorem LP (n : ℕ) : n = n := by
 -- [EG]: essential definition outside theorem statement
 -- proof string: "use 70; unfold f; norm_num"
 def f : ℝ → ℝ := fun x ↦ x + 30
-
 theorem EG : ∃ x : ℝ, f x = 100 := by sorry
 
 -- [WX] essential definition in imported file
