@@ -1,24 +1,27 @@
 import Mathlib
 import Checklist.Auxiliary
 
--- [C9] most basic example
+-- [C9] most basic example; "rfl"
 theorem C9 : 1 = 1 := by sorry
 
--- [QU] `sorry` used as a term
-theorem QU : 1 = 1 := sorry
 
--- [AF] `sorry` in a have statement
+-- [QU] `sorry` used as a term; "by linarith"
+theorem QU (n : ℕ) (h : 2 * n < 7) : n ≤ 3 := sorry
+
+-- [AF] `sorry` in a have statement; "rfl"
 theorem AF : 1 = 1 := by
   have h : 1 = 1 := by sorry
   assumption
 
--- [PP] `sorry` term in constructor brackets
+
+
+-- [PP] `sorry` tactic in function argument "intro n h; rfl"
 theorem PP : ∀ n : ℕ, n = n := fun n ↦ Nat.rec (rfl) (by sorry) n
 
--- [HJ] term variant of ex4
+-- [HJ] `sorry` tactic in function argument "by intro n h; rfl"
 theorem HJ : ∀ n : ℕ, n = n := fun n ↦ Nat.rec (rfl) (sorry) n
 
--- [R3] two `sorry` on same line
+-- [R3] two `sorry` on same line; "rfl" and "intro n h; rfl"
 theorem R3 : ∀ n : ℕ, n = n := fun n ↦ Nat.rec (by sorry) (by sorry) n
 
 -- [LP] `sorry` in an indented focus block
@@ -29,17 +32,21 @@ theorem LP (n : ℕ) : n = n := by
 
 
 -- [EG]: essential definition outside theorem statement
+-- proof string: "use 70; unfold f; norm_num"
 def f : ℝ → ℝ := fun x ↦ x + 30
 
 theorem EG : ∃ x : ℝ, f x = 100 := by sorry
 
 -- [WX] essential definition in imported file
+-- proof string: "use 51; unfold g; norm_num"
 theorem WX : ∃ x : ℝ, g x = 100 := by sorry
 
 -- [SR] essential definition in transitive import
-theorem SR : ∃ x : ℕ, h x = 100 := by sorry
+-- proof string: "use 68; unfold h; norm_num"
+theorem SR : ∃ x : ℝ, h x = 100 := by sorry
 
--- [GM]: `sorry` requiring disambiguating namespaces
+-- [GM]: `sorry` requiring interpretation of namespaces
+-- proof string: "use 81; unfold k; norm_num"
 namespace first
 def k : ℝ → ℝ := fun x ↦ x + 77
 end first
@@ -57,7 +64,30 @@ open second
 theorem GM : ∃ x : ℝ, k x = 100 := by sorry
 end
 
--- [KM] direct application of imported theorem; warning: this can ALSO be proven directly
+-- [KM] direct application of imported theorem; warning: this can ALSO be proven
+-- directly; need something easier, yet robust
 theorem KM (n : ℕ) (m : ℕ) :
     Nat.factorial (n + m + 2) ≥ Nat.factorial (n + 1) * Nat.pow 2 (m + 1) :=
   by exact factorial_inequality n (m + 1)
+
+-- [KP] mathlib statement, solved by exact?
+-- proof string: "exact MulChar.exists_mulChar_orderOf F h hζ"
+variable (F : Type) [Field F] [Fintype F]
+variable (R : Type) [CommRing R]
+lemma KP (n : ℕ) (h : n ∣ Fintype.card F - 1) (ζ : R)
+    (hζ : IsPrimitiveRoot ζ n) :
+    ∃ χ : MulChar F R, orderOf χ = n := by sorry
+
+
+-- [YF] mathlib statement, solved by exact?
+-- namespace ProbabilityTheory
+
+-- section Kernel
+
+-- variable {Ω Ω' : Type*} {mΩ : MeasurableSpace Ω} {mΩ' : MeasurableSpace Ω'}
+--   {ν : MeasureTheory.Measure Ω'} {κ : ProbabilityTheory.Kernel Ω' Ω} {X : Ω → ℝ} {c : ℝ≥0}
+
+-- #check ProbabilityTheory.integrable_exp_mul_of_abs_le
+
+-- lemma YF (h : ProbabilityTheory.Kernel.HasSubgaussianMGF X c κ ν) :
+--     ∀ᵐ ω' ∂ν, κ ω' Set.univ ≤ 1 := by sorry
