@@ -62,7 +62,7 @@ example (u v x y z t : ℝ)
     (h8 : 0 < z - u)
     (h9 : 0 < z - v) :
     u * y + v * x + u * v < 3 * z * t := by
-  nlinarith
+  sorry
 
 
 /-
@@ -83,8 +83,7 @@ theorem WX : ∃ x : ℝ, g x = 100 := by sorry
 -- proof string: "use 68; unfold h; norm_num"
 theorem SR : ∃ x : ℝ, h x = 100 := by sorry
 
--- [GM]: `sorry` requiring interpretation of namespaces
--- proof string: "use 81; unfold k; norm_num"
+-- some namespace stuff
 namespace first
 def k : ℝ → ℝ := fun x ↦ x + 77
 end first
@@ -97,10 +96,23 @@ namespace third
 def k : ℝ → ℝ := fun x ↦ x + 6
 end third
 
+namespace fourth
+def k : ℝ → ℝ := fun x ↦ x + 72
+end fourth
+
+
 section
 open second
+
+-- [GM]: `sorry` requiring interpretation of namespaces
+-- proof string: "use 81; unfold k; norm_num"
 theorem GM : ∃ x : ℝ, k x = 100 := by sorry
 end
+
+-- [DH] `sorry` requiring interpretation of namespaces
+-- proof string: "use 94; unfold third.k; norm_num"
+theorem DH : ∃ x : ℝ, third.k x = 100 := by use 94; unfold third.k; norm_num
+
 
 
 /-
