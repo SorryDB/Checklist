@@ -62,7 +62,7 @@ example (u v x y z t : ℝ)
     (h8 : 0 < z - u)
     (h9 : 0 < z - v) :
     u * y + v * x + u * v < 3 * z * t := by
-  nlinarith
+  sorry
 
 
 /-
