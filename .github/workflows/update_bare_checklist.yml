@@ -30,5 +30,4 @@ jobs:
       - name: Push to checklist branch
         if: success()
         run: |
-          git fetch origin checklist || true
           git push --force origin HEAD:checklist
